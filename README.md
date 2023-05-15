@@ -6,14 +6,14 @@ signature is a client implemented in Go that can query signatures from [4byte.di
 Actually, 'ethereum-lists' is tied to '4byte.directory', and the difference is that '4byte.directory' is more real-time('ethereum-lists' has fewer signatures than '4byte.directory'). However, it's better for API users to have more endpoint options than one (4byte.directory, github.com, openchain.xyz).
 
 ### They has (2023-05-15)
-ethereum-lists: 915,173c <br>
-4byte.directory: 1,210,015 <br>
-openchain: method 2,361,806, event 372,441 <br>
+ethereum-lists: `915,173` <br>
+4byte.directory: `1,210,015` <br>
+openchain: method `2,361,806`, event `372,441` <br>
 
 # Usage
 
-### file
-Get the signature from the 'ethereum-lists' repository.
+### file client
+Get the signature from the [ethereum-lists](https://github.com/ethereum-lists/4bytes) repository.
 
 ```go
 package main
@@ -37,8 +37,8 @@ func main() {
 
 ```
 
-### fourbytes
-Get the signature from the '4byte.directory' API.
+### fourbytes client
+Get the signature from the [4byte.directory](https://www.4byte.directory/) API.
 
 ```go
 package main
@@ -61,8 +61,8 @@ func main() {
 }
 ```
 
-### openchain
-Get the signature from the 'openchainxyz' API.
+### openchain client
+Get the signature from the [openchainxyz](https://openchain.xyz/signatures) API.
 
 
 ```go
