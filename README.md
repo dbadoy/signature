@@ -12,6 +12,15 @@ openchain: method `2,361,806`, event `372,441` <br>
 
 # Usage
 
+## Install
+```bash
+$ go get -u github.com/dbadoy/signature
+# OR `go mod tidy`
+$ go get -u github.com/dbadoy/signature/file 
+$ go get -u github.com/dbadoy/signature/fourbytes
+$ go get -u github.com/dbadoy/signature/openchain
+```
+
 ### file client
 Get the signature from the [ethereum-lists](https://github.com/ethereum-lists/4bytes) repository.
 
