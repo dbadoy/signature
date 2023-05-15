@@ -48,6 +48,12 @@ func (c *Client) Signature(id string) ([]string, error) {
 		sigs []string
 	)
 
+	// The 4byte.directory API handles the '0x' prefix on
+	// its own, so '0xa9059cbb' and 'a9059cbb' result in
+	// the same thing.
+	// The reason this library truncates the '0x' prefix
+	// is to check for legitimate requests (length
+	// checking) and discard them.
 	if strings.HasPrefix(id, "0x") {
 		id = strings.Trim(id, "0x")
 	}
