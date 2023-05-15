@@ -6,6 +6,92 @@ import (
 	"time"
 )
 
+func TestSignature(t *testing.T) {
+	testset := []struct {
+		id      string
+		success bool
+	}{
+		{
+			id:      "0xa9059cbb",
+			success: true,
+		},
+		{
+			id:      "a9059cbb",
+			success: true,
+		},
+		{
+			id:      "",
+			success: false,
+		},
+		{
+			id:      "0x",
+			success: false,
+		},
+		{
+			id:      "hello",
+			success: false,
+		},
+	}
+
+	c, err := New("", 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, task := range testset {
+		_, err := c.Signature(task.id)
+		if err != nil {
+			if task.success {
+				t.Fatal("TestSignature: got failed want success")
+			}
+			continue
+		}
+
+		if err == nil && !task.success {
+			t.Fatal("TestSignature: got success want failed")
+		}
+	}
+}
+
+func TestSignatureWithBytes(t *testing.T) {
+	testset := []struct {
+		id      []byte
+		success bool
+	}{
+		{
+			id:      []byte{169, 5, 156, 187}, // a9059cbb
+			success: true,
+		},
+		{
+			id:      nil,
+			success: false,
+		},
+		{
+			id:      []byte{1, 2, 3, 4, 5, 6},
+			success: false,
+		},
+	}
+
+	c, err := New("", 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, task := range testset {
+		_, err := c.SignatureWithBytes(task.id)
+		if err != nil {
+			if task.success {
+				t.Fatal("TestSignatureWithBytes: got failed want success")
+			}
+			continue
+		}
+
+		if err == nil && !task.success {
+			t.Fatal("TestSignatureWithBytes: got success want failed")
+		}
+	}
+}
+
 func TestSignatureNotFound(t *testing.T) {
 	c, err := New("", 0)
 	if err != nil {
