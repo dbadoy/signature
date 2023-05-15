@@ -1,8 +1,7 @@
 # signature
-Ethereum Signature API client implemented in Go. <br>
-`e.g. find('0xa9059cbb') -> transfer(address,uint256)` <br>
-
 signature is a client implemented in Go that can query signatures from [4byte.directory](https://www.4byte.directory/), [ethereum-lists](https://github.com/ethereum-lists/4bytes), [openchainxyz](https://openchain.xyz/signatures). <br>
+`e.g. "0xa9059cbb" -> transfer(address,uint256)` <br>
+
 
 Actually, 'ethereum-lists' is tied to '4byte.directory', and the difference is that '4byte.directory' is more real-time('ethereum-lists' has fewer signatures than '4byte.directory'). However, it's better for API users to have more endpoint options than one (4byte.directory, github.com, openchain.xyz).
 
