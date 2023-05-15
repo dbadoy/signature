@@ -59,7 +59,7 @@ import (
 )
 
 func main() {
-	client, err := fourbytes.New("", 0)
+	client, err := fourbytes.New(fourbytes.DefaultConfig())
 	if err != nil {
 		panic(err)
 	}
@@ -84,7 +84,7 @@ import (
 )
 
 func main() {
-	client, err := openchain.New("", 0)
+	client, err := openchain.New(openchain.DefaultConfig())
 	if err != nil {
 		panic(err)
 	}

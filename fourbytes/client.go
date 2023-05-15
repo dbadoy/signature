@@ -9,7 +9,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
-	"time"
 
 	"github.com/dbadoy/signature"
 	"github.com/dbadoy/signature/pkg/option"
@@ -22,16 +21,18 @@ var (
 
 // This client gets the signature from the 4byte.directory API.
 type Client struct {
-	version string
-	caller  *http.Client
+	cfg    *Config
+	caller *http.Client
 }
 
-// timeout is in seconds, where 0 means no timeout.
-func New(version string /* This parameter has no meaning until a later version */, timeout time.Duration) (*Client, error) {
+func New(cfg *Config) (*Client, error) {
+	// Always set V1
+	cfg.Version = Version
+
 	return &Client{
-		version: Version, /* Fixed value: 'v1/' */
+		cfg: cfg,
 		caller: &http.Client{
-			Timeout: timeout,
+			Timeout: cfg.Timeout,
 		},
 	}, nil
 }
@@ -87,7 +88,7 @@ func (c *Client) doRequest(ctx context.Context, api, method string, response int
 	var (
 		query string
 		err   error
-		url   = fmt.Sprintf("%s%s%s", BaseURL, c.version, api)
+		url   = fmt.Sprintf("%s%s%s", BaseURL, c.cfg.Version, api)
 	)
 
 	if opt != nil {

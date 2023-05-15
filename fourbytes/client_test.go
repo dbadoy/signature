@@ -33,7 +33,7 @@ func TestSignature(t *testing.T) {
 		},
 	}
 
-	c, err := New("", 0)
+	c, err := New(DefaultConfig())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -72,7 +72,7 @@ func TestSignatureWithBytes(t *testing.T) {
 		},
 	}
 
-	c, err := New("", 0)
+	c, err := New(DefaultConfig())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -94,8 +94,8 @@ func TestSignatureWithBytes(t *testing.T) {
 
 func TestInvalidVersion(t *testing.T) {
 	c := Client{
-		version: "unknown/",
-		caller:  &http.Client{},
+		cfg:    &Config{Version: "unknown/"},
+		caller: &http.Client{},
 	}
 
 	if _, err := c.Signature("0xa9059cbb"); err == nil {
@@ -115,7 +115,7 @@ func TestTimeout(t *testing.T) {
 	}
 
 	for _, task := range testset {
-		c, err := New(task.version, task.timeout)
+		c, err := New(&Config{task.version, task.timeout})
 		if err != nil {
 			t.Fatal(err)
 		}

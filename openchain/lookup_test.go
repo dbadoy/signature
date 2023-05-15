@@ -43,7 +43,7 @@ func TestMethodLookup(t *testing.T) {
 		},
 	}
 
-	client, err := New("", 0)
+	client, err := New(DefaultConfig())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -101,7 +101,7 @@ func TestEventLookup(t *testing.T) {
 		},
 	}
 
-	client, err := New("", 0)
+	client, err := New(DefaultConfig())
 	if err != nil {
 		t.Fatal(err)
 	}
