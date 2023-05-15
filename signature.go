@@ -5,6 +5,7 @@ import "errors"
 var (
 	ErrInvalidID         = errors.New("invalid ID")
 	ErrSignatureNotFound = errors.New("signature not found")
+	ErrRequiredMissing   = errors.New("required field missing")
 )
 
 type Caller interface {

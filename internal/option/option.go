@@ -1,13 +1,8 @@
 package option
 
 import (
-	"errors"
 	"net/url"
 	"reflect"
-)
-
-var (
-	ErrRequiredMissing = errors.New("required field missing")
 )
 
 type Option interface {

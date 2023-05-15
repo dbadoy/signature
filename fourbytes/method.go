@@ -16,7 +16,7 @@ type MethodSigV1Options struct {
 func (s *MethodSigV1Options) Encode() (string, error) {
 	// Disallows full search.
 	if s.HexSignature == "" || s.HexSignature == "0x" {
-		return "", option.ErrRequiredMissing
+		return "", signature.ErrRequiredMissing
 	}
 
 	if strings.HasPrefix(s.HexSignature, "0x") {

@@ -16,7 +16,7 @@ type EventSigV1Options struct {
 func (s *EventSigV1Options) Encode() (string, error) {
 	// Disallows full search.
 	if s.HexSignature == "" || s.HexSignature == "0x" {
-		return "", option.ErrRequiredMissing
+		return "", signature.ErrRequiredMissing
 	}
 
 	if strings.HasPrefix(s.HexSignature, "0x") {
