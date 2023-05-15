@@ -66,16 +66,18 @@ func (c *Client) Signature(id string) ([]string, error) {
 		return nil, err
 	}
 
-	if items, ok := resp.Result.Event[id]; ok {
-		for _, item := range items {
-			sigs = append(sigs, item.Name)
-		}
+	var items []Item
+	e, ok := resp.Result.Event[id]
+	if ok {
+		items = e
+	}
+	m, ok := resp.Result.Method[id]
+	if ok {
+		items = m
 	}
 
-	if items, ok := resp.Result.Method[id]; ok {
-		for _, item := range items {
-			sigs = append(sigs, item.Name)
-		}
+	for _, item := range items {
+		sigs = append(sigs, item.Name)
 	}
 
 	// Lookup returns a 200 response with a null value, even
