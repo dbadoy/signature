@@ -11,9 +11,12 @@ func TestMethodLookup(t *testing.T) {
 		success bool
 	}{
 		{
-			/*
-				Openchain returns success with a null result value, even if there is no result value !!
-			*/
+			opts: LookupV1Options{
+				Method: "0x00000000",
+			},
+			success: true, /* openchain API returns success with a null result value, even if there is no result value !! */
+		},
+		{
 			opts:    LookupV1Options{},
 			success: false,
 		},
@@ -69,9 +72,12 @@ func TestEventLookup(t *testing.T) {
 		success bool
 	}{
 		{
-			/*
-				Openchain returns success with a null result value, even if there is no result value !!
-			*/
+			opts: LookupV1Options{
+				Event: "0x0000000000000000000000000000000000000000000000000000000000000000",
+			},
+			success: true, /* openchain API returns success with a null result value, even if there is no result value !! */
+		},
+		{
 			opts:    LookupV1Options{},
 			success: false,
 		},
