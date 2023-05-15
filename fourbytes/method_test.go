@@ -49,13 +49,13 @@ func TestMethodSignature(t *testing.T) {
 		_, statusCode, err := client.MethodSignatureV1(context.Background(), task.opts)
 		if err != nil || statusCode != 200 {
 			if task.success {
-				t.Fatal("TestGetSignature failure: got failed want success")
+				t.Fatal("TestMethodSignature: got failed want success")
 			}
 			continue
 		}
 
 		if (err == nil && statusCode == 200) && !task.success {
-			t.Fatal("TestGetSignature failure: got success want failed")
+			t.Fatal("TestMethodSignature: got success want failed")
 		}
 	}
 }

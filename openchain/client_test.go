@@ -13,7 +13,7 @@ func TestSignatureNotFound(t *testing.T) {
 	}
 
 	if _, err := c.Signature("0x00000000"); err == nil {
-		t.Fatal("TestSignatureNotFound: want fail got: succeed")
+		t.Fatal("TestSignatureNotFound: want fail got succeed")
 	}
 }
 
@@ -48,13 +48,13 @@ func TestTimeout(t *testing.T) {
 		_, err = c.Signature("0xa9059cbb")
 		if err != nil {
 			if task.success {
-				t.Fatal("TestTimeout failure: got failed want success")
+				t.Fatal("TestTimeout: got failed want success")
 			}
 			continue
 		}
 
 		if err == nil && !task.success {
-			t.Fatal("TestTimeout failure: got success want failed")
+			t.Fatal("TestTimeout: got success want failed")
 		}
 	}
 }
