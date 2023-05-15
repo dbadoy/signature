@@ -11,7 +11,7 @@ import (
 	"strings"
 
 	"github.com/dbadoy/signature"
-	"github.com/dbadoy/signature/pkg/option"
+	"github.com/dbadoy/signature/internal/option"
 	"github.com/ethereum/go-ethereum/common"
 )
 

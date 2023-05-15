@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/dbadoy/signature/pkg/option"
+	"github.com/dbadoy/signature/internal/option"
 )
 
 type LookupV1Options struct {

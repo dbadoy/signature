@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/dbadoy/signature"
-	"github.com/dbadoy/signature/pkg/option"
+	"github.com/dbadoy/signature/internal/option"
 )
 
 type EventSigV1Options struct {
