@@ -3,7 +3,8 @@ package signature
 import "errors"
 
 var (
-	ErrInvalidID = errors.New("invalid ID")
+	ErrInvalidID         = errors.New("invalid ID")
+	ErrSignatureNotFound = errors.New("signature not found")
 )
 
 type Caller interface {

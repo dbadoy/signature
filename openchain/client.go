@@ -83,7 +83,7 @@ func (c *Client) Signature(id string) ([]string, error) {
 	//
 	// Signature defines this as an error.
 	if len(sigs) == 0 {
-		return nil, errors.New("signature not found")
+		return nil, signature.ErrSignatureNotFound
 	}
 
 	return sigs, nil

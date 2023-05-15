@@ -1,7 +1,6 @@
 package file
 
 import (
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -49,7 +48,7 @@ func (c *Client) Signature(id string) ([]string, error) {
 		var err error
 		switch res.StatusCode {
 		case 404:
-			err = errors.New("signature not found")
+			err = signature.ErrSignatureNotFound
 		default:
 			err = fmt.Errorf("unknown status code %d (report me: https://github.com/dbadoy/signature)", res.StatusCode)
 		}
