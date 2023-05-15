@@ -1,5 +1,6 @@
 # signature
-Ethereum Signature API client implemented in Go. `e.g find('0xa9059cbb') -> transfer(address,uint256)` <br>
+`e.g. find('0xa9059cbb') -> transfer(address,uint256)` <br>
+Ethereum Signature API client implemented in Go. <br>
 
 signature is a client implemented in Go that can query signatures from [4byte.directory](https://www.4byte.directory/), [ethereum-lists](https://github.com/ethereum-lists/4bytes), [openchainxyz](https://openchain.xyz/signatures). <br>
 
