@@ -59,10 +59,10 @@ func TestSignature(t *testing.T) {
 
 func TestSplitBySeperator(t *testing.T) {
 	if len(splitBySeperator("getTokenLockersForAccount(address)")) != 1 {
-		t.Fatalf("TestSplitBySeperator: ??")
+		t.Fatalf("TestSplitBySeperator: single item case failed")
 	}
 	if len(splitBySeperator("getTokenLockersForAccount(address);activateCollection(uint256)")) != 2 {
-		t.Fatalf("TestSplitBySeperator: ??")
+		t.Fatalf("TestSplitBySeperator: couldn't handle seperator")
 	}
 	c, err := New(0)
 	if err != nil {
