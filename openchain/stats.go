@@ -12,6 +12,6 @@ func (c *Client) StatsV1(ctx context.Context) (*StatsResponse, int, error) {
 		err        error
 	)
 
-	statusCode, err = c.doRequest(ctx, "stats", http.MethodGet, &res, nil, nil)
+	statusCode, err = c.doRequest(ctx, "/stats", http.MethodGet, &res, nil, nil)
 	return &res, statusCode, err
 }

@@ -62,6 +62,6 @@ func (c *Client) LookupV1(ctx context.Context, opts LookupV1Options) (*Signature
 		err        error
 	)
 
-	statusCode, err = c.doRequest(ctx, "lookup", http.MethodGet, &res, nil, &opts)
+	statusCode, err = c.doRequest(ctx, "/lookup", http.MethodGet, &res, nil, &opts)
 	return &res, statusCode, err
 }
