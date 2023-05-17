@@ -2,16 +2,14 @@ package fourbytes
 
 import (
 	"context"
-	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"strings"
 
 	"github.com/dbadoy/signature"
 	"github.com/dbadoy/signature/internal/option"
+	"github.com/dbadoy/signature/internal/utils"
 	"github.com/ethereum/go-ethereum/common"
 )
 
@@ -85,44 +83,16 @@ func (c *Client) SignatureWithBytes(id []byte) ([]string, error) {
 }
 
 func (c *Client) doRequest(ctx context.Context, api, method string, response interface{}, body io.Reader, opt option.Option) (int, error) {
-	var (
-		query string
-		err   error
-		url   = fmt.Sprintf("%s%s%s", BaseURL, c.cfg.Version, api)
-	)
+	//
+	var url = fmt.Sprintf("%s%s%s", BaseURL, c.cfg.Version, api)
 
 	if opt != nil {
-		query, err = opt.Encode()
+		query, err := opt.Encode()
 		if err != nil {
 			return 0, err
 		}
 		url += fmt.Sprintf("?%s", query)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, method, url, body)
-	if err != nil {
-		return 0, err
-	}
-
-	resp, err := c.caller.Do(req)
-	if err != nil {
-		return 0, err
-	}
-	defer resp.Body.Close()
-
-	statusCode := resp.StatusCode
-
-	respBody, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return statusCode, err
-	}
-
-	if statusCode == 200 {
-		if err := json.Unmarshal(respBody, &response); err != nil {
-			return 0, err
-		}
-		return statusCode, nil
-	}
-
-	return statusCode, errors.New(string(respBody))
+	return utils.DoRequest(ctx, c.caller, url, method, response, body)
 }
