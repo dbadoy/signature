@@ -83,9 +83,7 @@ func (c *Client) SignatureWithBytes(id []byte) ([]string, error) {
 }
 
 func (c *Client) doRequest(ctx context.Context, api, method string, response interface{}, body io.Reader, opt option.Option) (int, error) {
-	//
 	var url = fmt.Sprintf("%s%s%s", BaseURL, c.cfg.Version, api)
-
 	if opt != nil {
 		query, err := opt.Encode()
 		if err != nil {
