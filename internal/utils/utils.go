@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-func DoRequest(ctx context.Context, caller *http.Client, url, method string, response interface{}, body io.Reader) (int, error) {
+func DoRequestWithContext(ctx context.Context, caller *http.Client, url, method string, response interface{}, body io.Reader) (int, error) {
 	req, err := http.NewRequestWithContext(ctx, method, url, body)
 	if err != nil {
 		return 0, err

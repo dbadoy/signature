@@ -94,5 +94,5 @@ func (c *Client) doRequest(ctx context.Context, api, method string, response int
 		url += fmt.Sprintf("?%s", query)
 	}
 
-	return utils.DoRequest(ctx, c.caller, url, method, response, body)
+	return utils.DoRequestWithContext(ctx, c.caller, url, method, response, body)
 }
