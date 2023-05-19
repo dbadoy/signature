@@ -3,7 +3,7 @@ signature is a client implemented in Go that can query signatures from [4byte.di
 `e.g. "0xa9059cbb" -> transfer(address,uint256)` <br>
 
 
-Actually, 'ethereum-lists' is tied to '4byte.directory', and the difference is that '4byte.directory' is more real-time('ethereum-lists' has fewer signatures than '4byte.directory'). However, it's better for API users to have more endpoint options than one (4byte.directory, github.com, openchain.xyz).
+'ethereum-lists' is tied to '4byte.directory', and the difference is that '4byte.directory' is more real-time('ethereum-lists' has fewer signatures than '4byte.directory'). However, it's better for API users to have more endpoint options than one (4byte.directory, github.com, openchain.xyz).
 
 ### They have (2023-05-15)
 ethereum-lists: `915,173` <br>
