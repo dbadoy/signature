@@ -74,6 +74,14 @@ func (c *Client) Signature(id string) ([]string, error) {
 		sigs = append(sigs, siginfo.TextSignature)
 	}
 
+	// Returns a 200 response with a null value, even if
+	// the retrieved value does not exist in the database.
+	//
+	// Signature defines this as an error.
+	if len(sigs) == 0 {
+		return nil, signature.ErrSignatureNotFound
+	}
+
 	return sigs, nil
 }
 
