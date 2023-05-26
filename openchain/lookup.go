@@ -35,7 +35,7 @@ import (
 // 		   ]
 // 	   }
 //
-// However, the library only supports a single query. Just note.
+// However, this library only supports a single query. Just note.
 
 type LookupV1Options struct {
 	// You can only retrieve one or the other of Method
