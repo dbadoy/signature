@@ -87,10 +87,10 @@ func (c *Client) SignatureWithBytes(id []byte) ([]string, error) {
 	return c.Signature(common.Bytes2Hex(id))
 }
 
-func (c *Client) doRequest(ctx context.Context, version, api, method string, response interface{}, body io.Reader, opt option.Option) (int, error) {
+func (c *Client) doRequest(ctx context.Context, version, api, method string, response interface{}, body io.Reader, opts option.Option) (int, error) {
 	var url = fmt.Sprintf("%s%s%s", BaseURL, version, api)
-	if opt != nil {
-		query, err := opt.Encode()
+	if opts != nil {
+		query, err := opts.Encode()
 		if err != nil {
 			return 0, err
 		}
