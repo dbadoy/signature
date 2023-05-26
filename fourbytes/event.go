@@ -10,6 +10,9 @@ import (
 )
 
 type EventSigV1Options struct {
+	// The event ID to search for.
+	//
+	// It doesn't matter include '0x' or not.
 	HexSignature string `json:"hex_signature"`
 }
 
