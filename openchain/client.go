@@ -25,9 +25,6 @@ type Client struct {
 
 // timeout is in seconds, where 0 means no timeout.
 func New(cfg *Config) (*Client, error) {
-	// Always set V1
-	cfg.Version = DefaultVersion
-
 	return &Client{
 		cfg: cfg,
 		caller: &http.Client{
@@ -97,8 +94,8 @@ func (c *Client) SignatureWithBytes(id []byte) ([]string, error) {
 	return c.Signature(common.Bytes2Hex(id))
 }
 
-func (c *Client) doRequest(ctx context.Context, api, method string, response interface{}, body io.Reader, opt option.Option) (int, error) {
-	var url = fmt.Sprintf("%s%s%s", BaseURL, c.cfg.Version, api)
+func (c *Client) doRequest(ctx context.Context, version, api, method string, response interface{}, body io.Reader, opt option.Option) (int, error) {
+	var url = fmt.Sprintf("%s%s%s", BaseURL, version, api)
 	if opt != nil {
 		query, err := opt.Encode()
 		if err != nil {

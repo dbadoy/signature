@@ -41,6 +41,6 @@ func (c *Client) MethodSignatureV1(ctx context.Context, opts MethodSigV1Options)
 		err        error
 	)
 
-	statusCode, err = c.doRequest(ctx, "/signatures", http.MethodGet, &res, nil, &opts)
+	statusCode, err = c.doRequest(ctx, v1, "/signatures", http.MethodGet, &res, nil, &opts)
 	return &res, statusCode, err
 }
