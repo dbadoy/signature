@@ -33,7 +33,7 @@ import (
 // 			      "filtered": false
 // 			   }
 // 		   ]
-// 	   s}
+// 	   }
 //
 // However, the library only supports a single query. Just note.
 
