@@ -10,10 +10,43 @@ import (
 	"github.com/dbadoy/signature/internal/option"
 )
 
+// The original openchain API works like this.
+//
+//     - A comma-delimited list of function hashes with leading 0x prefix.
+//     Method: 0xa9059cbb,0x000000fa,0x00000009
+// 	   --> {
+// 		   "0x00000009": [
+// 			   {
+// 			      "name": "getInitializationCodeFromContractRuntime_6CLUNS()",
+// 			      "filtered": false
+// 			   }
+// 		   ],
+// 		   "0x000000fa": [
+// 			   {
+// 			      "name": "getDexAggKeeperWhitelistPosition_IkFc(address)",
+// 			      "filtered": false
+// 			   }
+// 		   ],
+// 		   "0xa9059cbb": [
+// 			   {
+// 			      "name": "transfer(address,uint256)",
+// 			      "filtered": false
+// 			   }
+// 		   ]
+// 	   }
+//
+// However, this library only supports a single query. Just note.
+
 type LookupV1Options struct {
+	// You can only retrieve one or the other of Method
+	// and Event in a single request.
+	//
+	// It doesn't matter include '0x' or not.
 	Method string `json:"function"`
 	Event  string `json:"event"`
-	Filter bool   `json:"filter"`
+
+	// Whether or not to filter out junk results.
+	Filter bool `json:"filter"`
 }
 
 func (s *LookupV1Options) Encode() (string, error) {
