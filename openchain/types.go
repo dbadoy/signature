@@ -3,7 +3,7 @@ package openchain
 const (
 	BaseURL = "https://api.openchain.xyz/signature-database/"
 
-	Version = "v1"
+	DefaultVersion = "v1"
 )
 
 /*

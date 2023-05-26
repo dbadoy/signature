@@ -120,8 +120,8 @@ func TestTimeout(t *testing.T) {
 		timeout time.Duration
 		success bool
 	}{
-		{Version, 0, true},
-		{Version, time.Millisecond, false /* timeout */},
+		{DefaultVersion, 0, true},
+		{DefaultVersion, time.Millisecond, false /* timeout */},
 		{"unknown/", 0, true /* it should fail, but now it succeeds because the version is fixed. */},
 	}
 
