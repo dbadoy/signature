@@ -1,7 +1,6 @@
 package openchain
 
 import (
-	"net/http"
 	"testing"
 	"time"
 )
@@ -103,30 +102,18 @@ func TestSignatureNotFound(t *testing.T) {
 	}
 }
 
-func TestInvalidVersion(t *testing.T) {
-	c := Client{
-		cfg:    &Config{Version: "unknown/"},
-		caller: &http.Client{},
-	}
-
-	if _, err := c.Signature("0xa9059cbb"); err == nil {
-		t.Fatal("TestInvalidVersion: version (unknown/) must be fail")
-	}
-}
-
 func TestTimeout(t *testing.T) {
 	testset := []struct {
-		version string
 		timeout time.Duration
 		success bool
 	}{
-		{DefaultVersion, 0, true},
-		{DefaultVersion, time.Millisecond, false /* timeout */},
-		{"unknown/", 0, true /* it should fail, but now it succeeds because the version is fixed. */},
+		{0, true},
+		{time.Millisecond, false /* timeout */},
+		{0, true /* it should fail, but now it succeeds because the version is fixed. */},
 	}
 
 	for _, task := range testset {
-		c, err := New(&Config{Version: task.version, Timeout: task.timeout})
+		c, err := New(&Config{Timeout: task.timeout})
 		if err != nil {
 			t.Fatal(err)
 		}

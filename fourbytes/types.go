@@ -2,8 +2,7 @@ package fourbytes
 
 const (
 	BaseURL = "https://www.4byte.directory/api/"
-
-	DefaultVersion = "v1"
+	v1      = "v1"
 )
 
 /*
