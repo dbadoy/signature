@@ -11,5 +11,5 @@ type Config struct {
 }
 
 func DefaultConfig() *Config {
-	return &Config{Version, 0}
+	return &Config{DefaultVersion, 0}
 }

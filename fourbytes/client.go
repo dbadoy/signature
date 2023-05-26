@@ -25,7 +25,7 @@ type Client struct {
 
 func New(cfg *Config) (*Client, error) {
 	// Always set V1
-	cfg.Version = Version
+	cfg.Version = DefaultVersion
 
 	return &Client{
 		cfg: cfg,

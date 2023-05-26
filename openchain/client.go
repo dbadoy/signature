@@ -26,7 +26,7 @@ type Client struct {
 // timeout is in seconds, where 0 means no timeout.
 func New(cfg *Config) (*Client, error) {
 	// Always set V1
-	cfg.Version = Version
+	cfg.Version = DefaultVersion
 
 	return &Client{
 		cfg: cfg,
