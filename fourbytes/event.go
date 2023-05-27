@@ -17,13 +17,13 @@ type EventSigV1Options struct {
 }
 
 func (s *EventSigV1Options) Encode() (string, error) {
-	// Disallows full search.
-	if s.HexSignature == "" || s.HexSignature == "0x" {
-		return "", signature.ErrRequiredMissing
-	}
-
 	if strings.HasPrefix(s.HexSignature, "0x") {
 		s.HexSignature = strings.Trim(s.HexSignature, "0x")
+	}
+
+	// Disallows full search.
+	if s.HexSignature == "" {
+		return "", signature.ErrRequiredMissing
 	}
 
 	// Disallows LIKE search.
