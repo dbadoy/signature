@@ -7,6 +7,10 @@ type Config struct {
 	Timeout time.Duration
 }
 
+func (c *Config) validate() error {
+	return nil
+}
+
 func DefaultConfig() *Config {
 	return &Config{0}
 }

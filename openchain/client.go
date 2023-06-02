@@ -25,6 +25,14 @@ type Client struct {
 
 // timeout is in seconds, where 0 means no timeout.
 func New(cfg *Config) (*Client, error) {
+	if cfg == nil {
+		cfg = DefaultConfig()
+	}
+
+	if err := cfg.validate(); err != nil {
+		return nil, err
+	}
+
 	return &Client{
 		cfg: cfg,
 		caller: &http.Client{
