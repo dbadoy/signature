@@ -5,6 +5,17 @@ import (
 	"time"
 )
 
+func TestDefaultConfig(t *testing.T) {
+	c, err := New(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if c.cfg.Timeout != 0 {
+		t.Fatalf("TestDefaultConfig: invalid DefaultConfig.Timeout want %d got %d", 0, c.cfg.Timeout)
+	}
+}
+
 func TestSignature(t *testing.T) {
 	testset := []struct {
 		id      string
